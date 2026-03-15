@@ -1,0 +1,67 @@
+import { useState } from "react"
+import { motion } from "framer-motion"
+import type { Todo } from "../../lib/types"
+
+interface ToggleListProps {
+  tasks: Todo[]
+  onDelete?: (id: string, task: Todo) => void
+  onToggle?: (id: string, task: Todo) => void
+  toggle?: boolean
+  maxHeight?: string
+}
+
+export default function ToggleList({
+  tasks,
+  onDelete,
+  onToggle,
+  toggle = true,
+  maxHeight = "max-h-113 sm:max-h-113",
+}: ToggleListProps) {
+  const [toggleItems, setToggleItems] = useState<Record<string, boolean>>({})
+
+  return (
+    <ul
+      onClick={(e) => e.stopPropagation()}
+      className={`overflow-y-auto w-full sm:pb-24 pb-12 ${maxHeight}`}
+    >
+      {tasks?.map((task) => (
+        <motion.li
+          key={task.id}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="even:bg-black/30 odd:bg-black/50 text-left mx-2 sm:mx-16 px-3 sm:px-16 text-sm sm:text-xl py-1 sm:py-4 my-2 sm:my-4 rounded flex justify-between sm:font-medium hover:bg-black/20"
+          onClick={() =>
+            setToggleItems((prev) => ({ ...prev, [task.id]: !prev[task.id] }))
+          }
+        >
+          <span className={task?.done ? "line-through opacity-50" : ""}>
+            {task?.task}
+          </span>
+          <div className="flex items-center gap-1 max-h-">
+            {!toggleItems[task.id] && toggle ? (
+              <input
+                key={task.id}
+                type="checkbox"
+                checked={!!task?.done}
+                onClick={(e) => e.stopPropagation()}
+                onChange={() => onToggle?.(task.id, task)}
+                className="w-4 h-4 sm:w-6 sm:h-6 ml-7 sm:ml-3"
+              />
+            ) : (
+              <span
+                onClick={(e) => {
+                  e.stopPropagation()
+                  onDelete?.(task.id, task)
+                }}
+                className="cursor-pointer text-red-400 hover:text-red-600 hover:scale-150 ml-7 sm:ml-3"
+              >
+                ✗
+              </span>
+            )}
+          </div>
+        </motion.li>
+      ))}
+    </ul>
+  )
+}

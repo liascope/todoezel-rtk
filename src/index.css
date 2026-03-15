@@ -1,0 +1,14 @@
+
+@import "tailwindcss";
+
+@layer base {
+   :root {
+    --font-sans: 'Delius', cursive;
+  }
+}
+
+@layer components {
+}
+
+@layer utilities {
+}
