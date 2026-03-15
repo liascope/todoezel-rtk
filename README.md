@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+ToDoeZel – React.js
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A responsive task management application built with React.js. It extends the original Vanilla JS version with new features, reusable components, global state management, and a clean, motivating design. The app helps users organize their tasks, notes, and shopping items with features like progress tracking, date-based reminders, and persistent storage.
 
-Currently, two official plugins are available:
+🚀 Key Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Tasks & Notes (General List)
 
-## React Compiler
+-Add notes/todos via the ➕ button
+-Mark items as complete (✔) to update a percentage tracker
+-Delete all completed tasks in one click (appears after 3+ done items)
+-Date-Based Tasks (Header & Do Later Section)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+-Upcoming or due tasks appear in the header with their own progress tracker
+-Clicking the header reveals the full date-specific task list
+-Save future tasks in Do Later section → stored in localStorage
+-View past 3 completed tasks + all future ones via Show Saved Tasks
+-Shopping List
 
-## Expanding the ESLint configuration
+-Simple, clean list for shopping items
+-Mark items as checked when done
+-Motivational Design
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+-Dynamic progress trackers that change colors as completion percentage changes
+-Minimal, friendly, and motivating UI with custom SVG icons
+-Fully responsive layout for desktop and mobile
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+-Modal Window, provides additional information in a focused view
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+🧩 Tech Stack & Libraries
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+-React.js – main framework for building UI
+-TypeScript – static typing for safer and scalable code
+-React Router (imperative way) – handles routing and navigation between pages
+-Redux Toolkit – global state management for date-based tasks
+-React Hooks – local state handling for Todos and Shop items
+-Custom Hook – reusable localStorage persistence logic
+-Reusable Components – modular and maintainable design
+-Vite – fast build tool and development server
+-Tailwind CSS – utility-first styling for responsive design
+-SVG – custom icons handcrafted for the UI
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+🧠 What I’ve Learned & Demonstrated
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+-Refactored and expanded my Vanilla JS project into a modern React.js app
+-Implemented global and local state handling (Redux Toolkit + Hooks)
+-Built a reusable custom hook for persistent localStorage logic
+-Developed reusable components for better maintainability and scalability
+-Designed a responsive, minimal, and motivating UI with Tailwind CSS
+-Coded custom SVG icons and integrated dynamic progress trackers with color changes
+-Practiced React Router conventions (routing, layout, navigation)
+-Applied TypeScript throughout the app, which helped catch errors early — previously I had incorrectly named props that went unnoticed without TypeScript
+  
+🔧 Running the Project
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Clone the repo: git clone https://github.com/liascope/todoezel-rtk.git
+Install dependencies: npm install
+Run locally: npm run dev
+Open http://localhost:5173 in your browser.
+
+📜 License
+Developed by Zeliha A. (liascope). This project is open for personal use. Redistribution or modification requires explicit permission.
+
+✨ ToDoeZel – React.js demonstrates the step from fundamental Vanilla JS skills to a scalable, modern React application with reusable components, state management via Redux Toolkit, React Router navigation, and a polished UI.
