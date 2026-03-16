@@ -1,9 +1,9 @@
-// src/pages/doLaterSlice.ts
+
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { todayISO } from "../../lib/config";
 import type { Todo, DoLaterEntry } from "../../lib/types";
-import { useAppSelector } from "../app/store";
+import type { RootState } from "../app/store";
 
 interface DoLaterState {
   allSavedTasks: DoLaterEntry[]
@@ -18,15 +18,10 @@ const initialState: DoLaterState = {
 };
 
 
-
-export const selectTodaysTasks = useAppSelector((state) => {
-  const todaysTasks = state.doLater.allSavedTasks.find(
-    e => e.date === todayISO
-  )?.tasks;
-
-  if (!todaysTasks) return [];
-  return todaysTasks;
-});
+export const selectTodaysTasks = (state: RootState) => {
+  const todaysTasks = state.doLater.allSavedTasks.find(e => e.date === todayISO)?.tasks;
+  return todaysTasks ?? [];
+};
 
 export const doLaterSlice = createSlice({
   name: 'doLater',

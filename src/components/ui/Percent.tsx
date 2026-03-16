@@ -1,10 +1,15 @@
 import { useMemo } from "react";
 import { COLORS } from "../../lib/config";
+import type { Todo } from "../../lib/types";
 
 const interpolateColor = (col1:number[], col2:number[], factor:number)=>col1.map((c, i) =>
     Math.round(c + (col2[i] - c) * factor) );
 
-export default function Percent({ arr }) {
+type PercentProps = {
+  arr: Todo[]
+}
+
+export default function Percent({ arr }:PercentProps) {
   const percent = useMemo(() => { 
     const total = arr?.length || 0;
     const done = arr?.filter((t) => t.done)?.length || 0;

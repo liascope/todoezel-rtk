@@ -1,6 +1,5 @@
 import type { UIbutton } from "../../lib/types";
 
-
 export default function Button({ children, onClick, disabledOnDefault = false, customStyle = 'text-xl', type }: UIbutton) {
   return (
     <button

@@ -1,14 +1,13 @@
-import {useSelector, useDispatch} from 'react-redux'
-
- import { today } from "../../lib/config";
+import { today } from "../../lib/config";
 import { markDeleted, checkTask, selectTodaysTasks } from './doLaterSlice'
 import ToggleList from "../ui/ToggleList"
+import { useAppDispatch, useAppSelector } from '../app/store';
 
 
 export default function TodaysTasks (){
-   const dispatch = useDispatch();
+   const dispatch = useAppDispatch()
 
-  const todaysTasks = useSelector(selectTodaysTasks)
+  const todaysTasks = useAppSelector(selectTodaysTasks)
 
 function handleDelete(id:string){
   dispatch(markDeleted(id))

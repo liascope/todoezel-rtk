@@ -29,5 +29,5 @@ export type Todo = {
 
 export type DoLaterEntry = {
   tasks: Todo[]
-  date?:string
+  date:string
 }

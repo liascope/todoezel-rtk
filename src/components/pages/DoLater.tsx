@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-// import {useDispatch, useSelector} from 'react-redux'
+import { useState} from "react";
 import {Link} from 'react-router-dom'
 
 import { addTasks } from './doLaterSlice';
@@ -8,20 +7,15 @@ import ButtonQuery from "../ui/ButtonQuery";
 import Button from "../ui/Button";
 import SaveIcon from "../ui/NavIcons/SaveIcon";
 import Spinner from '../ui/Spinner';
-// import type { AppDispatch } from "../app/store";
-// import type { RootState } from "../app/store";
 import type { Todo } from "../../lib/types";
 import { useAppDispatch, useAppSelector } from "../app/store";
 
 export default function DoLater() {
   const dispatch = useAppDispatch();
-  
-  // const dispatch = useDispatch<AppDispatch>();
   const savedDate = useAppSelector((state) => state.doLater.savedDate);
   
   const [date, setDate] = useState<string>("");
   const [doLater, setDoLater] = useState<Todo[]>([]);
-  const [disabled, setDisabled] = useState<boolean>(true);
   const [isSaving, setIsSaving] = useState<boolean>(false);
 
   function handleSave() {
@@ -31,10 +25,8 @@ export default function DoLater() {
     setDate('');
     setTimeout(() => setIsSaving(false), 2500);
   }
+const disabled = doLater.length === 0 || date.trim() === '';
 
-  useEffect(() => {
-    setDisabled(doLater.length === 0 || date.trim() === '');
-  }, [doLater, date]);
 
   return (
     <div className="max-w-screen p-1 sm:px-5">

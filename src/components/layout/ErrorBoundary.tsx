@@ -2,8 +2,8 @@ import { Component } from "react";
 import type { ReactNode } from "react"
 import type { JSX } from "react"
 interface ErrorBoundaryProps {
-  children: ReactNode       // alles, was gerendert wird
-  fallback?: ReactNode      // optionales Fallback-Element
+  children: ReactNode       
+  fallback?: ReactNode     
 }
 
 interface ErrorBoundaryState {

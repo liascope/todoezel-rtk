@@ -1,15 +1,19 @@
-import {useSelector, useDispatch} from 'react-redux'
+
 import { deleteTask } from './doLaterSlice'
+import { useAppDispatch, useAppSelector } from '../app/store';
+import type { DoLaterEntry } from '../../lib/types';
 
 export default function SavedTasks(){
-  const savedTasks = useSelector(store=> store.doLater.allSavedTasks)
+  const savedTasks:DoLaterEntry[] = useAppSelector(store=> store.doLater.allSavedTasks)
 
-   const dispatch = useDispatch();
-   function handleDelete(date){
+   const dispatch = useAppDispatch();
+
+   function handleDelete(date:string)
+   {
    dispatch(deleteTask(date))
  } 
 
- const sortedTasks = savedTasks?.slice().sort((a, b) => new Date(a.date) - new Date(b.date));
+const sortedTasks = savedTasks.slice().sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
     return (<><h2 className='uppercase text-center font-extrabold' >{savedTasks.length > 0 ? 'Your Saved Tasks or Notes 🗂️' : 'No Saved Tasks or Notes 🗂️' }</h2>
     <ul className="list-none mx-1 my-1 sm:mx-8 sm:my-10 text-center sm:pb-24 pb-12 max-h-125 sm:max-h-113 overflow-y-auto ">

@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-
+import { useState } from "react";
 import { doneTasksToDelete } from "../../../lib/config"
 import Button from "../../ui/Button";
 import ButtonQuery from "../../ui/ButtonQuery"
@@ -9,19 +8,13 @@ import useStorage from "../../../lib/useStorage"
 import BinIcon from "../../ui/NavIcons/BinIcon";
 import Confirm from "../../ui/Confirm";
 import type { Todo, TodoShopProps } from "../../../lib/types";
-// src/lib/types.ts
 
 // reusable Comp for Todo ('/') & Shop ('/shop') - state without date
 export default function TodoShop({type}: TodoShopProps){
 const [todoes, setTodoes, error] = useStorage<Todo[]>(type, [])
-const [maxReached, setMaxReached] = useState(false)
  const [confirm, setConfirm] = useState(false)
-
-useEffect(() => {
-  const doneTasks = todoes?.filter(t => t.done && !t.delete)?.length
-  setMaxReached(doneTasks >= doneTasksToDelete);
-}, [todoes]);
-
+const maxReached =
+  todoes.filter(t => t.done && !t.delete).length >= doneTasksToDelete;
 
 return (<>  {confirm && <Confirm clickYes={()=>{setTodoes((prev)=> prev.filter((item) => !item.done)); setConfirm(false)}} clickNo={()=>setConfirm(false)}/>}  <div className="max-w-screen sm:px-5 flex flex-row items-center mx-1 sm:mx-6 justify-end  relative">
   {type === 'todoes' && <Percent arr={todoes}></Percent>}
