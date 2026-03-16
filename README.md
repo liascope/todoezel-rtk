@@ -1,4 +1,4 @@
-ToDoeZel – React.js
+Todoezel, Task Manager App – React.js, Redux Toolkit & TypeScript
 
 A responsive task management application built with React.js. It extends the original Vanilla JS version with new features, reusable components, global state management, and a clean, motivating design. The app helps users organize their tasks, notes, and shopping items with features like progress tracking, date-based reminders, and persistent storage.
 
