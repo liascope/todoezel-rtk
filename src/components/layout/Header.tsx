@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import ModalContent from "../ui/ModalContent";
 
 export default function Header(){

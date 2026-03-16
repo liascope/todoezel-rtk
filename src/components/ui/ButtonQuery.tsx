@@ -5,13 +5,7 @@ import Button from "./Button";
 import PlusIcon from "./NavIcons/PlusIcon";
 import Spinner from "./Spinner";
 
-import type { Todo } from "../../lib/types";
-
-interface ButtonQueryProps {
-  tasks: Todo[]
-  setTasks: (tasks: Todo[] | ((prev: Todo[]) => Todo[])) => void
-  placeholder: string
-}
+import type { ButtonQueryProps } from "../../lib/types";
 
 // reusable Comp for Todoes, Shop, Do-Later
 export default function ButtonQuery({ setTasks, tasks, placeholder }: ButtonQueryProps) {
@@ -23,7 +17,7 @@ export default function ButtonQuery({ setTasks, tasks, placeholder }: ButtonQuer
     setDisabled(query.trim() === '');
   }, [query]);
 
-  function handleSubmit(e:React.FormEvent<HTMLFormElement>) {
+  function handleSubmit(e:React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
     if (query.trim() === '') return;
 

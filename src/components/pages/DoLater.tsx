@@ -14,9 +14,9 @@ export default function DoLater() {
   const dispatch = useAppDispatch();
   const savedDate = useAppSelector((state) => state.doLater.savedDate);
   
-  const [date, setDate] = useState<string>("");
+  const [date, setDate] = useState("");
   const [doLater, setDoLater] = useState<Todo[]>([]);
-  const [isSaving, setIsSaving] = useState<boolean>(false);
+  const [isSaving, setIsSaving] = useState(false);
 
   function handleSave() {
     setIsSaving(true);

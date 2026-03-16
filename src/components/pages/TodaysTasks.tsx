@@ -3,11 +3,9 @@ import { markDeleted, checkTask, selectTodaysTasks } from './doLaterSlice'
 import ToggleList from "../ui/ToggleList"
 import { useAppDispatch, useAppSelector } from '../app/store';
 
-
 export default function TodaysTasks (){
    const dispatch = useAppDispatch()
-
-  const todaysTasks = useAppSelector(selectTodaysTasks)
+   const todaysTasks = useAppSelector(selectTodaysTasks)
 
 function handleDelete(id:string){
   dispatch(markDeleted(id))

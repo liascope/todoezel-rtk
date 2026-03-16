@@ -13,14 +13,13 @@ import type { Todo, TodoShopProps } from "../../../lib/types";
 export default function TodoShop({type}: TodoShopProps){
 const [todoes, setTodoes, error] = useStorage<Todo[]>(type, [])
  const [confirm, setConfirm] = useState(false)
-const maxReached =
-  todoes.filter(t => t.done && !t.delete).length >= doneTasksToDelete;
+const maxReached = todoes.filter(t => t.done && !t.delete).length >= doneTasksToDelete;
 
 return (<>  {confirm && <Confirm clickYes={()=>{setTodoes((prev)=> prev.filter((item) => !item.done)); setConfirm(false)}} clickNo={()=>setConfirm(false)}/>}  <div className="max-w-screen sm:px-5 flex flex-row items-center mx-1 sm:mx-6 justify-end  relative">
   {type === 'todoes' && <Percent arr={todoes}></Percent>}
          
      <div className="w-full flex items-center flex-row"><ButtonQuery tasks={todoes} setTasks={setTodoes} placeholder={type === 'todoes' ? 'Add Todoes / Notes..' : 'Add Shop Items..'}>
-              </ButtonQuery>
+ </ButtonQuery>
 <Button onClick={() => setConfirm(true)} 
 disabledOnDefault={!maxReached} customStyle="text-xs" > <BinIcon maxReached={maxReached}/>
 </Button> </div>

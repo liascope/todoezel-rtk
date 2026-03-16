@@ -1,24 +1,5 @@
 import { Component } from "react";
-import type { ReactNode } from "react"
-import type { JSX } from "react"
-interface ErrorBoundaryProps {
-  children: ReactNode       
-  fallback?: ReactNode     
-}
-
-interface ErrorBoundaryState {
-  hasError: boolean
-}
-
-
-interface ErrorBoundaryProps {
-  children: ReactNode
-  fallback?: ReactNode
-}
-
-interface ErrorBoundaryState {
-  hasError: boolean
-}
+import type { ErrorBoundaryProps, ErrorBoundaryState } from "../../lib/types";
 
 export default class ErrorBoundary extends Component<
   ErrorBoundaryProps,
@@ -51,7 +32,7 @@ export default class ErrorBoundary extends Component<
   }
 }
 
-export function ErrorMsg(): JSX.Element {
+export function ErrorMsg(){
   return (
     <div className="text-center py-10 text-red-400">
       Oops! Something broke🚨

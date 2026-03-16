@@ -1,14 +1,6 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
-import type { Todo } from "../../lib/types"
-
-interface ToggleListProps {
-  tasks: Todo[]
-  onDelete?: (id: string, task: Todo) => void
-  onToggle?: (id: string, task: Todo) => void
-  toggle?: boolean
-  maxHeight?: string
-}
+import type { ToggleListProps } from "../../lib/types"
 
 export default function ToggleList({
   tasks,

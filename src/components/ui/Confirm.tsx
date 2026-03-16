@@ -1,9 +1,6 @@
 import { useState } from "react"
 import Spinner from "./Spinner"
-
-type ConfirmProps = {
-clickYes:()=>void,
-clickNo:()=>void}
+import type { ConfirmProps } from "../../lib/types"
 
 export default function Confirm ({clickYes, clickNo}:ConfirmProps){
   const [showLoader, setShowLoader] = useState(false)

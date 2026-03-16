@@ -2,13 +2,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { todayISO } from "../../lib/config";
-import type { Todo, DoLaterEntry } from "../../lib/types";
+import type { Todo, DoLaterEntry, DoLaterState } from "../../lib/types";
 import type { RootState } from "../app/store";
 
-interface DoLaterState {
-  allSavedTasks: DoLaterEntry[]
-  savedDate: string
-}
 
 const savedTasks: DoLaterEntry[] = JSON.parse(localStorage.getItem("doLater") || "[]");
 
@@ -16,7 +12,6 @@ const initialState: DoLaterState = {
   allSavedTasks: savedTasks,
   savedDate: ''
 };
-
 
 export const selectTodaysTasks = (state: RootState) => {
   const todaysTasks = state.doLater.allSavedTasks.find(e => e.date === todayISO)?.tasks;
