@@ -3,7 +3,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 import { todayISO } from "../../lib/config";
 import type { Todo, DoLaterEntry } from "../../lib/types";
-import type { RootState } from "../app/store";
+import { useAppSelector } from "../app/store";
 
 interface DoLaterState {
   allSavedTasks: DoLaterEntry[]
@@ -19,14 +19,14 @@ const initialState: DoLaterState = {
 
 
 
-export const selectTodaysTasks = (state: RootState): Todo[] => {
+export const selectTodaysTasks = useAppSelector((state) => {
   const todaysTasks = state.doLater.allSavedTasks.find(
     e => e.date === todayISO
   )?.tasks;
 
   if (!todaysTasks) return [];
   return todaysTasks;
-};
+});
 
 export const doLaterSlice = createSlice({
   name: 'doLater',

@@ -1,4 +1,4 @@
-import {useSelector} from 'react-redux'
+// import {useSelector} from 'react-redux'
 import { useNavigate, useLocation} from 'react-router-dom';
 import { today } from "../../lib/config";
 
@@ -7,7 +7,7 @@ import ArrowIcon from "../ui/NavIcons/ArrowIcon";
 import { selectTodaysTasks } from '../pages/doLaterSlice';
 
 export default function HeaderToday() {
-const todaysTasks = useSelector(selectTodaysTasks)
+const todaysTasks = selectTodaysTasks
 const navigate = useNavigate();
 const { pathname } = useLocation();
 

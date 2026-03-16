@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import {useDispatch, useSelector} from 'react-redux'
+// import {useDispatch, useSelector} from 'react-redux'
 import {Link} from 'react-router-dom'
 
 import { addTasks } from './doLaterSlice';
@@ -8,13 +8,16 @@ import ButtonQuery from "../ui/ButtonQuery";
 import Button from "../ui/Button";
 import SaveIcon from "../ui/NavIcons/SaveIcon";
 import Spinner from '../ui/Spinner';
-import type { AppDispatch } from "../app/store";
-import type { RootState } from "../app/store";
+// import type { AppDispatch } from "../app/store";
+// import type { RootState } from "../app/store";
 import type { Todo } from "../../lib/types";
+import { useAppDispatch, useAppSelector } from "../app/store";
 
 export default function DoLater() {
-  const dispatch = useDispatch<AppDispatch>();
-  const savedDate = useSelector((state: RootState) => state.doLater.savedDate);
+  const dispatch = useAppDispatch();
+  
+  // const dispatch = useDispatch<AppDispatch>();
+  const savedDate = useAppSelector((state) => state.doLater.savedDate);
   
   const [date, setDate] = useState<string>("");
   const [doLater, setDoLater] = useState<Todo[]>([]);
