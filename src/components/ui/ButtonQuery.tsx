@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import { generateUUID } from "../../lib/config";
 
 import Button from "./Button";
@@ -9,24 +9,21 @@ import type { ButtonQueryProps } from "../../lib/types";
 
 // reusable Comp for Todoes, Shop, Do-Later
 export default function ButtonQuery({ setTasks, tasks, placeholder }: ButtonQueryProps) {
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState("");
   const [disabled, setDisabled] = useState(true);
   const [addTask, setAddTask] = useState(false);
 
   useEffect(() => {
-    setDisabled(query.trim() === '');
+    setDisabled(query.trim() === "");
   }, [query]);
 
-  function handleSubmit(e:React.SubmitEvent<HTMLFormElement>) {
+  function handleSubmit(e: React.SubmitEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (query.trim() === '') return;
+    if (query.trim() === "") return;
 
     setAddTask(true);
-    setTasks([
-      ...tasks,
-      { id: generateUUID(), task: query.trim(), done: false, delete: false },
-    ]);
-    setQuery('');
+    setTasks([...tasks, { id: generateUUID(), task: query.trim(), done: false, delete: false }]);
+    setQuery("");
     setTimeout(() => setAddTask(false), 300);
   }
 
@@ -37,7 +34,7 @@ export default function ButtonQuery({ setTasks, tasks, placeholder }: ButtonQuer
         placeholder={placeholder}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        className="w-full m-1 my-5 sm:my-9 p-2 text-sm sm:text-lg text-center border border-emerald-400 bg-stone-900/70 rounded-sm sm:rounded-md"
+        className="w-full m-1 my-5 md:my-9 p-2 text-sm md:text-lg text-center border border-emerald-400 bg-stone-900/70 rounded-sm md:rounded-md"
       />
 
       <Button type="submit" disabledOnDefault={disabled}>
